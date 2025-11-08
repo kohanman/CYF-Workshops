@@ -4,6 +4,11 @@ function increment(node) {
   node.textContent = Number(current) + 1;
 }
 
+function decrement(node) {
+  let current = node.textContent;
+  node.textContent = Number(current) - 1;
+}
+
 export function App() {
   const body = document.createElement("body");
 
@@ -18,14 +23,18 @@ export function App() {
   main.innerHTML = `
         <p id="counter" data-testid="counter">0</p>
         <button id="increment">Increment</button>
+        <button id="decrement">Decrement</button>
     `;
   body.appendChild(main);
 
-  const button = body.querySelector("#increment");
+  const incrementButton = body.querySelector("#increment");
+  const decrementButton = body.querySelector("#decrement");
   const counter = body.querySelector("#counter");
-  button.addEventListener("click", () => {
+  incrementButton.addEventListener("click", () => {
     increment(counter);
   });
-
+  decrementButton.addEventListener("click", () => {
+    decrement(counter);
+  });
   return body;
 }
